@@ -33,16 +33,18 @@ app.set('view engine', 'hbs')
 
 app.use('/', function (req, res, next) {
   const date = new Date()
-  let day = date.getDate()
-  let year = date.getFullYear()
-  let month = (date.getMonth() + 1)
-  let hour = (date.getHours() + 8)
-
-  let minute = date.getMinutes()
-  let second = date.getSeconds()
-
-  console.log(`${year}-${month}-${day} ${hour}:${minute}:${second} | ${req.method} ${req.originalUrl}`)
+  req.requestTime = date.getSeconds()
   next()
+})
+
+app.use('/', function (req, res, next) {
+
+  setTimeout(() => {
+    const date = new Date()
+    console.log(`Time elapsed : ${date.getSeconds() - req.requestTime}s`)
+    next()
+  }, 5000)
+
 })
 
 
