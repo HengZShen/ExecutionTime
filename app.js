@@ -31,23 +31,6 @@ app.set('view engine', 'hbs')
 
 
 
-app.use('/', function (req, res, next) {
-  const date = new Date()
-  req.requestTime = date.getSeconds()
-  next()
-})
-
-app.use('/', function (req, res, next) {
-
-  setTimeout(() => {
-    const date = new Date()
-    console.log(`Time elapsed : ${date.getSeconds() - req.requestTime}s`)
-    next()
-  }, 5000)
-
-})
-
-
 app.use(routes)
 
 // won't execute
