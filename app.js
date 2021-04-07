@@ -29,6 +29,11 @@ app.use(urlencoded({ extended: true }))
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: ".hbs" }))
 app.set('view engine', 'hbs')
 
+app.use('/', function (req, res, next) {
+  const date = new Date()
+  req.requestTime = date.getSeconds()
+  next()
+})
 
 
 app.use(routes)

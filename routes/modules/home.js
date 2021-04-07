@@ -9,11 +9,11 @@ const Todo = require('../../models/todo')
 
 
 
-router.use('/', function (req, res, next) {
-  const date = new Date()
-  req.requestTime = date.getSeconds()
-  next()
-})
+// router.use('/', function (req, res, next) {
+//   const date = new Date()
+//   req.requestTime = date.getSeconds()
+//   next()
+// })
 
 router.use('/', function (req, res, next) {
 
